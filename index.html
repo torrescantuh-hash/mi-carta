@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti 💗</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #2b1025, #7b294e, #e89aaa);
+  color: #fff1f5;
+}
+
+.corazon {
+  position: fixed;
+  bottom: -40px;
+  animation: subir 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes subir {
+  from { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: 0.8; }
+  to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+
+.carta {
+  width: 90%;
+  max-width: 390px;
+  padding: 30px 24px;
+  text-align: center;
+  background: #fff0f3;
+  color: #702642;
+  border-radius: 22px;
+  box-shadow: 0 15px 50px #17091680;
+  position: relative;
+  z-index: 2;
+  animation: aparecer 1.2s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(25px) scale(.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+h1 { font-size: 27px; }
+
+p { line-height: 1.8; }
+
+button {
+  background: #b52e61;
+  color: white;
+  border: none;
+  padding: 13px 22px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover { background: #8f2049; }
+
+#mensaje {
+  display: none;
+  white-space: pre-line;
+  animation: aparecer 1s ease;
+}
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+  <div style="font-size:40px">💌</div>
+  <h1>Una carta para ti</h1>
+  <p>Hay algo que llevo tiempo queriendo decirte...</p>
+
+  <button onclick="abrirCarta()">Abrir mi carta 💗</button>
+
+  <div id="mensaje">
+    <p>
+      Quería recordarte lo especial que eres
+      y lo bonito que es tenerte en mi vida. ❤️
+
+      Espero que esta pequeña sorpresa
+      te saque una sonrisa.
+
+      Con mucho cariño,
+      alguien que piensa en ti. 💗
+    </p>
+  </div>
+</div>
+
+<script>
+function abrirCarta() {
+  document.getElementById("mensaje").style.display = "block";
+  document.querySelector("button").style.display = "none";
+}
+
+for (let i = 0; i < 24; i++) {
+  const h = document.createElement("div");
+  h.className = "corazon";
+  h.textContent = Math.random() > 0.5 ? "♥" : "♡";
+  h.style.left = Math.random() * 100 + "%";
+  h.style.animationDelay = Math.random() * 8 + "s";
+  h.style.animationDuration = (5 + Math.random() * 6) + "s";
+  h.style.fontSize = (14 + Math.random() * 22) + "px";
+  document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>
